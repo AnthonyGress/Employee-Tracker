@@ -1,20 +1,16 @@
 const inquirer = require('inquirer');
 const db = require('./db/dbQueries');
 
-// inquirer menu
-// Start the program by asking for manager info
 const init = () => {
   console.log("Welcome to the Employee Tracker!");
   menu();
 }
-
-
+// TODO comment this bad boy
 menu = () => {
   console.log('\n');
   inquirer
   .prompt(menuQs)
   .then((answers) => {
-  // search the response string and determine which question set to show the user based on their choices
   if (answers.menu == 'View All Departments') {
     viewDepartments();
   }
