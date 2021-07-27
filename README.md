@@ -1,7 +1,7 @@
 # Employee Tracker [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Screenshot
-<img width="879" alt="CMS screenshot" src="https://user-images.githubusercontent.com/70029654/127082588-d431ed9a-a30e-4215-b2aa-e8ba88af7da9.png">
+<img width="924" alt="CMS Screenshot" src="https://user-images.githubusercontent.com/70029654/127082681-a117e52c-ce7e-4b93-aa0c-f1b730c7c95a.png">
 
 
   ## Description
