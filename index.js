@@ -25,8 +25,7 @@ menu = () => {
             type: "input",
             message:
               "What is the name of the department you would like to add?",
-            name: "dept",
-            default: "1001",
+            name: "dept"
           })
           .then((answer) => {
             addDepartment(answer.dept);
@@ -37,20 +36,20 @@ menu = () => {
             {
               type: "input",
               message: "What is the name of the role you would like to add?",
-              name: "role",
+              name: "role"
             },
             {
               type: "input",
               message: "What is the salary for this role?",
-              name: "salary",
+              name: "salary"
             },
             {
               type: "input",
               message:
                 "What is the department id of the role you would like to add?",
               name: "dept",
-              default: "1001",
-            },
+              default: "1001"
+            }
           ])
           .then((answer) => {
             let roleInfo = [answer.role, answer.salary, answer.dept];
@@ -63,31 +62,31 @@ menu = () => {
               type: "input",
               message:
                 "What is the first name of the employee you would like to add?",
-              name: "firstName",
+              name: "firstName"
             },
             {
               type: "input",
               message:
                 "What is the last name of the employee you would like to add?",
-              name: "lastName",
+              name: "lastName"
             },
             {
               type: "input",
               message: "What is the employee's role id?",
-              name: "role",
+              name: "role"
             },
             {
               type: "input",
               message: "What is the employee's manager's id?",
-              name: "manager",
-            },
+              name: "manager"
+            }
           ])
           .then((answer) => {
             let employeeInfo = [
               answer.firstName,
               answer.lastName,
               answer.role,
-              answer.manager,
+              answer.manager
             ];
             addEmployee(employeeInfo);
           });
@@ -115,9 +114,9 @@ const menuQs = [
       "Add a Role",
       "Add an Employee",
       "Update Employee Role",
-      "Exit",
-    ],
-  },
+      "Exit"
+    ]
+  }
 ];
 
 // starts the program
@@ -173,13 +172,13 @@ async function updateEmployee() {
         type: "list",
         message: "Which employee would you like to update?",
         name: "employee",
-        choices: employeeArr,
+        choices: employeeArr
       },
       {
         type: "input",
         message: "What is their new role id?",
-        name: "role",
-      },
+        name: "role"
+      }
     ])
     //take the answer and split it into [first, last] so i can use the value to compare against db for update
     .then((answer) => {
