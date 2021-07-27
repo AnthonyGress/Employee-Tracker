@@ -31,7 +31,8 @@ menu = () => {
       {
         type: "input",
         message: 'What is the name of the department you would like to add?',
-        name: "dept"
+        name: "dept",
+        default: "1001"
       }
       )
     .then((answer) => {
@@ -54,7 +55,8 @@ menu = () => {
       {
         type: "input",
         message: 'What is the department id of the role you would like to add?',
-        name: "dept"
+        name: "dept",
+        default: "1001"
       }]
       )
     .then((answer) => {
@@ -148,17 +150,14 @@ async function viewRoles (){
 
 async function addDepartment (newDept){
   await db.addNewDepartment(newDept);
-  menu();
 }
 
 async function addRole (newRole, salary, deptId){
   await db.addNewRole(newRole, salary, deptId); 
-  menu();
 }
 
 async function addEmployee (employeeInfo){
   await db.addNewEmployee(employeeInfo); 
-  menu();
 }
 
 async function updateEmployee (){
@@ -195,5 +194,4 @@ async function updateEmployee (){
 
 async function writeUpdate (updateInfo){
   await db.updateRole(updateInfo); 
-  menu();
 }

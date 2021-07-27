@@ -38,7 +38,9 @@ class DB {
   addNewRole(roleInfo){
     return this.connection.query(
       "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", roleInfo, (err,result) => {
-        if (err) throw error
+        if (err) {
+          console.log(err);
+        }
         else {
           console.log(`Added new department ${roleInfo[0]}`)
           menu();
