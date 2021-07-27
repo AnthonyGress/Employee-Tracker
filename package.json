@@ -1,0 +1,24 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "A CMS for employee info",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techx-guy/Employee-Tracker.git"
+  },
+  "author": "techx-guy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techx-guy/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/techx-guy/Employee-Tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "mysql2": "^2.2.5"
+  }
+}
