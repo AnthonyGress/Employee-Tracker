@@ -94,6 +94,9 @@ menu = () => {
   else if (answers.menu == 'Update Employee Role') {
     updateEmployee();
   }
+  else {
+    process.exit();
+  }
   })
   .catch((error) => {
   console.log(error);
@@ -112,7 +115,8 @@ const menuQs = [
       'Add a Department',
       'Add a Role',
       'Add an Employee',
-      'Update Employee Role'
+      'Update Employee Role',
+      'Exit'
     ],
   }
 ];

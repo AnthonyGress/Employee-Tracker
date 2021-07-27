@@ -4,15 +4,15 @@ VALUES ("Engineering"),
        ("Finance"),
        ("Customer Service");
 
-INSERT INTO role (id, title, salary, department_id)
-VALUES (1, "Software Developer", 80000, 1001),
-       (2, "Salesperson", 60000, 1002),
-       (3, "Accountant", 75000, 1003),
-       (4, "Customer Liason", 50000, 1004),
-       (5, "Engineering Manager", 90000, 1001),
-       (6, "Sales Manager", 90000, 1002),
-       (7, "Finance Manager", 90000, 1003),
-       (8, "Customer Services Manager", 90000, 1004);
+INSERT INTO role (title, salary, department_id)
+VALUES ("Software Developer", 80000, 1001),
+       ("Salesperson", 60000, 1002),
+       ("Accountant", 75000, 1003),
+       ("Customer Liason", 50000, 1004),
+       ("Engineering Manager", 90000, 1001),
+       ("Sales Manager", 90000, 1002),
+       ("Finance Manager", 90000, 1003),
+       ("Customer Services Manager", 90000, 1004);
 
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)

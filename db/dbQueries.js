@@ -28,7 +28,10 @@ class DB {
     return this.connection.query(
       "INSERT INTO department (name) VALUES (?)", newDept, (err,result) => {
         if (err) throw error
-        else console.log(`Added new department ${newDept}`)
+        else {
+          console.log(`Added new department ${newDept}`)
+          menu();
+        }
       }
     )
   }
@@ -36,7 +39,10 @@ class DB {
     return this.connection.query(
       "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", roleInfo, (err,result) => {
         if (err) throw error
-        else console.log(`Added new department ${roleInfo[0]}`)
+        else {
+          console.log(`Added new department ${roleInfo[0]}`)
+          menu();
+        }
       }
     )
   }
@@ -44,7 +50,10 @@ class DB {
     return this.connection.query(
       "UPDATE employee SET role_id = (?) WHERE first_name = ? AND last_name = ?;", updateInfo, (err,result) => {
         if (err) throw err
-        else console.log(`Updated ${updateInfo[1]} ${updateInfo[2]}'s role id to ${updateInfo[0]}`)
+        else {
+          console.log(`Updated ${updateInfo[1]} ${updateInfo[2]}'s role id to ${updateInfo[0]}`)
+        menu();
+      }
       }
     )
   }
@@ -55,8 +64,10 @@ class DB {
         if (err) {
           console.log(err);
         }
-        else console.log(`Added new employee ${employeeInfo[0]} ${employeeInfo[1]}`);
-        return;
+        else {
+          console.log(`Added new employee ${employeeInfo[0]} ${employeeInfo[1]}`);
+          menu();
+        }
       }
     )
   }
