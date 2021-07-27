@@ -6,7 +6,7 @@
 
   ## Description
 
-  This is a CMS written in node.js using MySQL for the database. This backend application demonstrates CRUD on the database and all options are accessed through the command line interface.  
+  This is a backend CMS app written in Node.js. It uses MySQL for the database end of things. It sorts and displays data about the current companies employees, salaries, departments etc. The user can create, read, update, and delete from the database through this application.
 
   ## Table of Contents
   * [Description](#Description)
