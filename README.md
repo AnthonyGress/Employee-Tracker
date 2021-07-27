@@ -28,7 +28,7 @@
 
   ## Usage
 
-  [Video Walkthrough](https://youtu.be/YJb3HGMzTOA)
+  [Video Walkthrough](https://youtu.be/zxyheogvfhQ)
 
   To use this node app, clone the repo down, use the terminal to cd into the root directory. Then run:
   
