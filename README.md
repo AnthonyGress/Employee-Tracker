@@ -27,6 +27,7 @@
   ```
 
   ## Usage
+  [<img width="939" alt="Youtube Splash" src="https://user-images.githubusercontent.com/70029654/127232200-4d14a994-1b5b-4330-9b60-9c51ac6e5de8.png">](https://youtu.be/zxyheogvfhQ)
 
   [Video Walkthrough](https://youtu.be/zxyheogvfhQ)
 
