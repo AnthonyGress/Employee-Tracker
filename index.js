@@ -92,6 +92,12 @@ menu = () => {
           });
       } else if (answers.menu == "Update Employee Role") {
         updateEmployee();
+      } else if (answers.menu == "Delete an Employee") {
+        deleteEmp();
+      } else if (answers.menu == "Delete a Department") {
+        deleteDept();
+      } else if (answers.menu == "Delete a Role") {
+        deleteRole();
       } else {
         process.exit();
       }
@@ -114,6 +120,9 @@ const menuQs = [
       "Add a Role",
       "Add an Employee",
       "Update Employee Role",
+      "Delete an Employee",
+      "Delete a Department",
+      "Delete a Role",
       "Exit"
     ]
   }
@@ -125,21 +134,21 @@ init();
 async function viewEmployees() {
   let employees = await db.findAllEmployees();
   console.log("\n");
-  console.log(employees);
+  console.table(employees);
   menu();
 }
 // call the db's function to return all department data
 async function viewDepartments() {
   let departments = await db.findAllDepartments();
   console.log("\n");
-  console.log(departments);
+  console.table(departments);
   menu();
 }
 // call the db's function to return all role related data
 async function viewRoles() {
   let roles = await db.findAllRoles();
   console.log("\n");
-  console.log(roles);
+  console.table(roles);
   menu();
 }
 // call the db's function to add new department, passing in the data from the user
@@ -156,15 +165,7 @@ async function addEmployee(employeeInfo) {
 }
 // call the db's function to add update employee info
 async function updateEmployee() {
-  // create an array of all employees to create an options list for inquirer
-  let employeeArr = [];
-  // call the db function to get the employee names and concat {first last, first last, etc}
-  let employees = await db.employeeNames();
-  // converting object to array by looping over the object and pushing each name to the array,
-  Object.keys(employees).forEach(function (key) {
-    let row = employees[key];
-    employeeArr.push(row.employee_name);
-  });
+  let employeeArr = await createEmployeeList();
   // ask the user which employee to update from the list
   inquirer
     .prompt([
@@ -192,4 +193,101 @@ async function updateEmployee() {
 // call the db's function to write the updated info for the employee
 async function writeUpdate(updateInfo) {
   await db.updateRole(updateInfo);
+}
+// call the db's function to delete the employee
+async function deleteEmp(name) {
+  let employeeArr = await createEmployeeList();
+  // ask the user which employee to update from the list
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Which employee would you like to delete?",
+        name: "employee",
+        choices: employeeArr
+      }
+    ])
+    //take the answer and split it into [first, last] so i can use the value to compare against db for update
+    .then((answer) => {
+      let empName = answer.employee.split(" ");
+      let first_name = empName[0];
+      let last_name = empName[1];
+      let deletedEmp = [first_name, last_name];
+      db.deleteEmployee(deletedEmp);
+    });
+}
+
+// call the db's function to delete the dept
+async function deleteDept() {
+  let departments = await createDeptList();
+  // ask the user which dept to delete from the list
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Which department would you like to delete?",
+        name: "dept",
+        choices: departments
+      }
+    ])
+    //take the answer and split it into [first, last] so i can use the value to compare against db for update
+    .then((answer) => {
+      db.deleteDepartment(answer.dept);
+    });
+}
+// call the db's function to delete the role
+async function deleteRole() {
+  let roles = await createRoleList();
+  // ask the user which dept to delete from the list
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Which role would you like to delete?",
+        name: "role",
+        choices: roles
+      }
+    ])
+    //take the answer and split it into [first, last] so i can use the value to compare against db for update
+    .then((answer) => {
+      db.deleteRoleDb(answer.role);
+    });
+}
+
+async function createEmployeeList() {
+  // create an array of all employees to create an options list for inquirer
+  let employeeArr = [];
+  // call the db function to get the employee names and concat {first last, first last, etc}
+  let employees = await db.employeeNames();
+  // converting object to array by looping over the object and pushing each name to the array,
+  Object.keys(employees).forEach(function (key) {
+    let row = employees[key];
+    employeeArr.push(row.employee_name);
+  });
+  return employeeArr;
+}
+
+async function createDeptList() {
+  // create an array of all employees to create an options list for inquirer
+  let deptArr = [];
+  // call the db function to get the employee names and concat {first last, first last, etc}
+  let depts = await db.departmentNames();
+  // converting object to array by looping over the object and pushing each name to the array,
+  Object.keys(depts).forEach(function (key) {
+    let row = depts[key];
+    deptArr.push(row.departments);
+  });
+  return deptArr;
+}
+async function createRoleList() {
+  // create an array of all employees to create an options list for inquirer
+  let roleArr = [];
+  // call the db function to get the employee names and concat {first last, first last, etc}
+  let roles = await db.roleNames();
+  // converting object to array by looping over the object and pushing each name to the array,
+  Object.keys(roles).forEach(function (key) {
+    let row = roles[key];
+    roleArr.push(row.roles);
+  });
+  return roleArr;
 }

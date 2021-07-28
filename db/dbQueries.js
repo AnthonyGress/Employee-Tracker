@@ -89,6 +89,59 @@ class DB {
       "SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS employee_name FROM employee;"
     );
   }
+  // helper function which returns a list of the employee's first and last names
+  departmentNames() {
+    return this.connection.query(
+      "SELECT department.name AS departments FROM department;"
+    );
+  }
+  // helper function which returns a list of the employee's first and last names
+  roleNames() {
+    return this.connection.query("SELECT role.title AS roles FROM role;");
+  }
+
+  // deletes an employee using the value from inquirer
+  deleteEmployee(name) {
+    return this.connection.query(
+      "DELETE FROM employee WHERE first_name = ? AND last_name = ?;",
+      name,
+      (err, result) => {
+        if (err) throw err;
+        else {
+          console.log(`Deleted ${name[0]} ${name[1]}`);
+          menu();
+        }
+      }
+    );
+  }
+  // deletes a department using the value from inquirer
+  deleteDepartment(dept) {
+    return this.connection.query(
+      "DELETE FROM department WHERE name = ?;",
+      dept,
+      (err, result) => {
+        if (err) throw err;
+        else {
+          console.log(`Deleted ${dept} department`);
+          menu();
+        }
+      }
+    );
+  }
+  // deletes a department using the value from inquirer
+  deleteRoleDb(role) {
+    return this.connection.query(
+      "DELETE FROM role WHERE title = ?;",
+      role,
+      (err, result) => {
+        if (err) throw err;
+        else {
+          console.log(`Deleted ${role} role`);
+          menu();
+        }
+      }
+    );
+  }
 }
 
 module.exports = new DB(connection);
