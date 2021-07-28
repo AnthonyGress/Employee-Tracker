@@ -44,7 +44,7 @@ class DB {
         if (err) {
           console.log(err);
         } else {
-          console.log(`Added new department ${roleInfo[0]}`);
+          console.log(`Added new role ${roleInfo[0]}`);
           menu();
         }
       }

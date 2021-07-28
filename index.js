@@ -125,21 +125,21 @@ init();
 async function viewEmployees() {
   let employees = await db.findAllEmployees();
   console.log("\n");
-  console.table(employees);
+  console.log(employees);
   menu();
 }
 // call the db's function to return all department data
 async function viewDepartments() {
   let departments = await db.findAllDepartments();
   console.log("\n");
-  console.table(departments);
+  console.log(departments);
   menu();
 }
 // call the db's function to return all role related data
 async function viewRoles() {
   let roles = await db.findAllRoles();
   console.log("\n");
-  console.table(roles);
+  console.log(roles);
   menu();
 }
 // call the db's function to add new department, passing in the data from the user
